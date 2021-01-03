@@ -9,7 +9,7 @@ export default {
   name: "app",
   methods: {
     drawChart() {
-      console.log("11111")
+      console.log(11111)
       // import * as echarts from "echarts"
       var appData = require("./assets/test5.json");
       var formatUtil = this.$echarts.format;
@@ -17,6 +17,10 @@ export default {
       let myChart = this.$echarts.init(document.getElementById("main"));
       // 指定图表的配置项和数据
       let option = {
+        title: {
+            text: 'Wikipedia article classes',
+            left: 'center'
+        },
         tooltip: {
           // trigger: "item",
           // triggeron: "mousemove",

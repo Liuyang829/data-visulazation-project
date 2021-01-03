@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <!-- 引入 echarts.js -->
+    <script src="node_modules\echarts\dist\echarts.min.js"></script>
+</head>
+
+<body>
+    <h1>123</h1>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        // import * as echarts from "echarts"
+        var appData = [{
+            name: 'nodeA',            // First tree
+            value: 10,
+            children: [{
+                name: 'nodeAa',       // First leaf of first tree
+                value: 4
+            }, {
+                name: 'nodeAb',       // Second leaf of first tree
+                value: 6
+            }]
+        }, {
+            name: 'nodeB',            // Second tree
+            value: 20,
+            children: [{
+                name: 'nodeBa',       // Son of first tree
+                value: 20,
+                children: [{
+                    name: 'nodeBa1',  // Granson of first tree
+                    value: 20
+                }]
+            }]
+        }]
+        var formatUtil = echarts.format;
+        // 基于准备好的dom，初始化echarts实例
+        let myChart = echarts.init(document.getElementById("main"));
+        // 指定图表的配置项和数据
+        let option = {
+            // tooltip: {
+            //     // trigger: "item",
+            //     // triggeron: "mousemove",
+            //     formatter: function (info) {
+            //         // console.log(info);
+            //         var value = info.value;
+            //         var treePathInfo = info.treePathInfo;
+            //         var treePath = [];
+            //         // console.log(value)
+            //         for (var i = 1; i < treePathInfo.length; i++) {
+            //             treePath.push(treePathInfo[i].name);
+            //         }
+            //         return [
+            //             '<div class="tooltip-title">' +
+            //             formatUtil.encodeHTML(treePath.join("/")) +
+            //             "</div>",
+            //             "Word count: " + formatUtil.addCommas(value),
+            //         ].join("");
+            //     },
+            // },
+            tooltip:{hideDelay: 0},
+            series: [
+                {
+                    type: "treemap",
+                    drillDownIcon: "",
+                    leafDepth: 1,
+                    label: {
+                        show: true,
+                        formatter: "{b}",
+                        color: "#ffffff",
+                    },
+                    upperLabel: {
+                        show: true,
+                        height: 20,
+                        color: "#ffffff",
+                    },
+                    // itemStyle: {
+                    //   borderColor: "#fff",
+                    // },
+                    levels: [
+                        {
+                            itemStyle: {
+                                borderColor: "#CCCCCC",
+                                borderWidth: 6,
+                                gapWidth: 4,
+                            },
+                            upperLabel: {
+                                show: false,
+                            },
+                        },
+                        {
+                            colorSaturation: [0.4, 0.6],
+                            itemStyle: {
+                                borderColorSaturation: 0.7,
+                                gapWidth: 3,
+                                borderWidth: 2,
+                            },
+                        },
+                        {
+                            colorSaturation: [0.3, 0.5],
+                            itemStyle: {
+                                borderColorSaturation: 0.6,
+                                borderWidth: 1,
+                                gapWidth: 3,
+                            },
+                        },
+                        {
+                            itemStyle: {
+                                borderColorSaturation: 0.6,
+                                gapWidth: 1,
+                            },
+                        },
+                    ],
+                    data: appData,
+                },
+            ],
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</body>
+
+</html>
