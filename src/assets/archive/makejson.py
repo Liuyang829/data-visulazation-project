@@ -1,7 +1,7 @@
 import json
 import pandas as pd
 
-file=pd.read_csv("DBP_wiki1000.csv",header=None)
+file=pd.read_csv("DBP_wiki2000.csv",header=None)
 print(file.head(5))
 
 l1_all=[]
@@ -59,7 +59,7 @@ print("\n\n")
 print(all_data)
 print(all_data[3])
 
-filename="test5.json"
+filename="test6.json"
 f_obj=open(filename,'w')
 json.dump(all_data,f_obj)
 f_obj.close()

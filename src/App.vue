@@ -11,7 +11,7 @@ export default {
     drawChart() {
       console.log(11111)
       // import * as echarts from "echarts"
-      var appData = require("./assets/test5.json");
+      var appData = require("./assets/test6.json");
       var formatUtil = this.$echarts.format;
       // 基于准备好的dom，初始化echarts实例
       let myChart = this.$echarts.init(document.getElementById("main"));
